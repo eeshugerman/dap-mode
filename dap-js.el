@@ -41,6 +41,28 @@
 
 (dap-utils-vscode-setup-function "dap-js" "ms-vscode" "js-debug" dap-js-debug-path)
 
+;; TODO consider what vs spits out in the the terminal when debugging (reformatted):
+;; /usr/bin/env
+;; 'NODE_OPTIONS=
+;;   --require "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/ms-vscode.js-debug/src/bootloader.bundle.js"
+;;   --inspect-publish-uid=http'
+;; 'VSCODE_INSPECTOR_OPTIONS=
+;; {
+;;   "fileCallback": "/var/folders/4x/k0952rkx6ys6lyn62d_xrc240000ks/T/node-debug-callback-26ae24c7cef3ee1c",
+;;   "autoAttachMode": "always",
+;;   "onlyEntrypoint": false,
+;;   "execPath": "/Users/elliott.shugerman/.nvm/versions/node/v14.18.2/bin/node",
+;;   "waitForDebugger": "",
+;;   "deferredMode": false,
+;;   "inspectorIpc": "/var/folders/4x/k0952rkx6ys6lyn62d_xrc240000ks/T/node-cdp.98889-9.sock"
+;; }'
+;; /Users/elliott.shugerman/.nvm/versions/node/v14.18.2/bin/node \
+;;   --nolazy \
+;;   -r ts-node/register \
+;;   /Users/elliott.shugerman/devel/bodata/service/index.ts
+
+;; SEE ALSO: dap-python.el
+
 (defun dap-js--populate-start-file-args (conf)
   "Populate CONF with the required arguments."
   (let ((conf (-> conf
